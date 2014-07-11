@@ -1,29 +1,19 @@
-# Wookie
+wookie
+======
 
-TODO: Write a gem description
+I needed a name, man!
 
-## Installation
 
-Add this line to your application's Gemfile:
+# Variable assignment
+- Variables are created first time they're used
+- A Variable declaration doesn't include a type
+- Types are inferred
 
-    gem 'wookie'
+`
+foo = 43
+bar = "this is a nice string"
+`
+# Comments
+Comments are created with a `#`
 
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install wookie
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Contributing
-
-1. Fork it ( https://github.com/[my-github-username]/wookie/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+`#This is a comment and it lasts until end of the line`
