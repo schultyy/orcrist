@@ -29,4 +29,12 @@ describe "Parser" do
     ])
     expect(@parser.parse(code)).to eq(nodes)
   end
+
+  it 'parses nil assignment' do
+    code = 'a = nil'
+    nodes = Nodes.new([
+      SetLocalNode.new('a', NilNode.new)
+    ])
+    expect(@parser.parse(code)).to eq(nodes)
+  end
 end

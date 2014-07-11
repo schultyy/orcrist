@@ -27,3 +27,9 @@ class FalseNode < LiteralNode
   end
 end
 
+class NilNode < LiteralNode
+  def initialize
+    super(nil)
+  end
+end
+

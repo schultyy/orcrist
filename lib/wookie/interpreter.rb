@@ -52,6 +52,12 @@ class FalseNode
   end
 end
 
+class NilNode
+  def eval(context)
+    Constants['nil']
+  end
+end
+
 class GetLocalNode
   def eval(context)
     context.locals[name]

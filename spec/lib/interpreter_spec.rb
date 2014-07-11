@@ -2,8 +2,12 @@ require 'spec_helper'
 require 'wookie/interpreter'
 
 describe 'Interpreter' do
+  let(:code) { '' }
+  let(:root_context) { @interpreter.root_context }
+
   before do
     @interpreter = Interpreter.new
+    @interpreter.eval(code)
   end
 
   it 'interprets number' do
@@ -11,11 +15,8 @@ describe 'Interpreter' do
   end
 
   describe 'assignment' do
-    before do
-      @interpreter.eval('a = 5')
-    end
-    context 'context' do
-      let(:root_context) { @interpreter.root_context }
+    let(:code) { 'a = 5' }
+    context 'root context' do
       it 'context has a local' do
         expect(root_context.locals.length).to eq 1
       end
@@ -26,6 +27,16 @@ describe 'Interpreter' do
 
       it 'ID "a" has value 5' do
         expect(root_context.locals.fetch('a').ruby_value).to eq 5
+      end
+    end
+  end
+
+  describe 'nil assignment' do
+    let(:code) { 'a = nil' }
+    context 'root context' do
+      let(:local_var) { root_context.locals.fetch('a') }
+      it 'has variable "a" with value "nil"' do
+        expect(local_var.ruby_value).to eq nil
       end
     end
   end

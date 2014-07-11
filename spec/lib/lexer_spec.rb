@@ -55,4 +55,13 @@ describe "Lexer" do
       [:STRING, 'foo bar baz']
     ])
   end
+
+  it 'tokenizes nil assignment' do
+    tokens = @lexer.tokenize('a = nil')
+    expect(tokens).to eq([
+      [:IDENTIFIER, 'a'],
+      ['=', '='],
+      [:NIL, 'nil']
+    ])
+  end
 end

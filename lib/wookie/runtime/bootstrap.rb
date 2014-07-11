@@ -9,9 +9,11 @@ Constants["String"] = WookieClass.new
 
 Constants["TrueClass"] = WookieClass.new
 Constants["FalseClass"] = WookieClass.new
+Constants['NilClass'] = WookieClass.new
 
 Constants["true"] = Constants["TrueClass"].new_with_value(true)
 Constants["false"] = Constants["FalseClass"].new_with_value(false)
+Constants['nil'] = Constants['NilClass'].new_with_value(nil)
 
 Constants["Class"].def :new do |receiver, arguments|
   receiver.new
