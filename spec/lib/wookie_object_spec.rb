@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'wookie/wookie_object'
+require 'wookie/runtime/wookie_object'
 
 describe 'WookieObject' do
   it 'assigns runtime class' do
