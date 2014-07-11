@@ -15,16 +15,17 @@ describe 'Interpreter' do
       @interpreter.eval('a = 5')
     end
     context 'context' do
+      let(:root_context) { @interpreter.root_context }
       it 'context has a local' do
-        expect(RootContext.locals.length).to eq 1
+        expect(root_context.locals.length).to eq 1
       end
 
       it 'has local with ID "a"' do
-        expect(RootContext.locals.fetch('a')).to_not be_nil
+        expect(root_context.locals.fetch('a')).to_not be_nil
       end
 
       it 'ID "a" has value 5' do
-        expect(RootContext.locals.fetch('a').ruby_value).to eq 5
+        expect(root_context.locals.fetch('a').ruby_value).to eq 5
       end
     end
   end

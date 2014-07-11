@@ -6,12 +6,15 @@ require 'wookie/runtime/context'
 require 'wookie/runtime/bootstrap'
 
 class Interpreter
+  attr_reader :root_context
   def initialize
     @parser = WookieParser.new
+    root_self = Constants["Object"].new
+    @root_context = Context.new(root_self)
   end
 
   def eval(code)
-    @parser.parse(code).eval(RootContext)
+    @parser.parse(code).eval(@root_context)
   end
 end
 

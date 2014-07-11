@@ -7,9 +7,6 @@ Constants["Object"] = WookieClass.new
 Constants["Number"] = WookieClass.new
 Constants["String"] = WookieClass.new
 
-root_self = Constants["Object"].new
-RootContext = Context.new(root_self)
-
 Constants["TrueClass"] = WookieClass.new
 Constants["FalseClass"] = WookieClass.new
 
