@@ -1,8 +1,7 @@
 wookie
 ======
 
-I needed a name, man!
-
+[![Build Status](https://travis-ci.org/schultyy/wookie.svg?branch=master)](https://travis-ci.org/schultyy/wookie)
 
 # Variable assignment
 - Variables are created first time they're used
