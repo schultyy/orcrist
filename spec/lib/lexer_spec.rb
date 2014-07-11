@@ -23,4 +23,18 @@ describe "Lexer" do
       [:STRING, 'Foo']
     ])
   end
+
+  it 'tokenizes statements separated by Newline' do
+    tokens = @lexer.tokenize('a = 5
+                             b="foo bar baz"')
+    expect(tokens).to eq([
+      [:IDENTIFIER, 'a'],
+      ['=', '='],
+      [:NUMBER, 5],
+      [:NEWLINE,'\n'],
+      [:IDENTIFIER, 'b'],
+      ['=', '='],
+      [:STRING, 'foo bar baz']
+    ])
+  end
 end
