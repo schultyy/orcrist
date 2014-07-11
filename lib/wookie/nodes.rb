@@ -14,3 +14,16 @@ class CallNode < Struct.new(:receiver, :method, :arguments); end
 class GetLocalNode < Struct.new(:name); end
 
 class SetLocalNode < Struct.new(:name, :value); end
+
+class TrueNode < LiteralNode
+  def initialize
+    super(true)
+  end
+end
+
+class FalseNode < LiteralNode
+  def initialize
+    super(false)
+  end
+end
+

@@ -1,5 +1,5 @@
 class WookieLexer
-  KEYWORDS = []
+  KEYWORDS = ['true', 'false']
 
   def tokenize(code)
     code.chomp!

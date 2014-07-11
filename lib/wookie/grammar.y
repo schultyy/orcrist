@@ -3,6 +3,7 @@ class WookieParser
 token NEWLINE
 token NUMBER
 token STRING
+token TRUE FALSE
 token IDENTIFIER
 
 prechigh
@@ -39,6 +40,8 @@ rule
   Literal:
     NUMBER                        { result = NumberNode.new(val[0]) }
   | STRING                        { result = StringNode.new(val[0]) }
+  | TRUE                          { result = TrueNode.new }
+  | FALSE                         { result = FalseNode.new }
   ;
 
   Operator:

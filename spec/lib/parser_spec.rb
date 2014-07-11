@@ -13,4 +13,20 @@ describe "Parser" do
     ])
     expect(@parser.parse(code)).to eq nodes
   end
+
+  it "parses true assignment" do
+    code = "a = true"
+    nodes = Nodes.new([
+      SetLocalNode.new('a', TrueNode.new)
+    ])
+    expect(@parser.parse(code)).to eq(nodes)
+  end
+
+  it "parses false assignment" do
+    code = "a = false"
+    nodes = Nodes.new([
+      SetLocalNode.new('a', FalseNode.new)
+    ])
+    expect(@parser.parse(code)).to eq(nodes)
+  end
 end

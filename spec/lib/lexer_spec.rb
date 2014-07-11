@@ -24,6 +24,24 @@ describe "Lexer" do
     ])
   end
 
+  it 'tokenizes true' do
+    tokens = @lexer.tokenize('a = true')
+    expect(tokens).to eq([
+      [:IDENTIFIER, 'a'],
+      ['=', '='],
+      [:TRUE, 'true']
+    ])
+  end
+
+  it 'tokenizes false' do
+    tokens = @lexer.tokenize('a = false')
+    expect(tokens).to eq([
+      [:IDENTIFIER, 'a'],
+      ['=', '='],
+      [:FALSE, 'false']
+    ])
+  end
+
   it 'tokenizes statements separated by Newline' do
     tokens = @lexer.tokenize('a = 5
                              b="foo bar baz"')
