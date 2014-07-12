@@ -1,10 +1,12 @@
 class WookieParser
 
+token IF
 token NEWLINE
 token NUMBER
 token STRING
 token TRUE FALSE NIL
 token IDENTIFIER
+token INDENT DEDENT
 
 prechigh
   left  '*' '/'
@@ -35,6 +37,7 @@ rule
   | Operator
   | GetLocal
   | SetLocal
+  | If
   ;
 
   Literal:
@@ -59,7 +62,13 @@ rule
   SetLocal:
     IDENTIFIER "=" Expression     { result = SetLocalNode.new(val[0], val[2]) }
   ;
-
+  Block:
+    INDENT Expressions DEDENT     { result = val[1] }
+  ;
+  If:
+    IF Expression Block           { result = IfNode.new(val[1], val[2]) }
+  ;
+end
 ---- header
   require "wookie/lexer"
   require "wookie/nodes"

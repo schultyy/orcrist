@@ -37,4 +37,15 @@ describe "Parser" do
     ])
     expect(@parser.parse(code)).to eq(nodes)
   end
+
+  it 'parses if statement' do
+    code = <<-CODE
+if foo:
+  true
+CODE
+    nodes = Nodes.new([
+      IfNode.new(GetLocalNode.new('foo'), Nodes.new([TrueNode.new]))
+    ])
+    expect(@parser.parse(code,true)).to eq(nodes)
+  end
 end
