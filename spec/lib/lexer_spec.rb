@@ -43,13 +43,16 @@ describe "Lexer" do
   end
 
   it 'tokenizes statements separated by Newline' do
-    tokens = @lexer.tokenize('a = 5
-                             b="foo bar baz"')
+    code = <<-CODE
+a = 5
+b = "foo bar baz"
+    CODE
+    tokens = @lexer.tokenize(code)
     expect(tokens).to eq([
       [:IDENTIFIER, 'a'],
       ['=', '='],
       [:NUMBER, 5],
-      [:NEWLINE,'\n'],
+      [:NEWLINE,"\n"],
       [:IDENTIFIER, 'b'],
       ['=', '='],
       [:STRING, 'foo bar baz']
@@ -62,6 +65,20 @@ describe "Lexer" do
       [:IDENTIFIER, 'a'],
       ['=', '='],
       [:NIL, 'nil']
+    ])
+  end
+
+  it 'tokenizes if statement' do
+    code = <<-CODE
+if foo:
+  true
+CODE
+    tokens = @lexer.tokenize(code)
+    expect(tokens).to eq([
+      [:IF, 'if'], [:IDENTIFIER, 'foo'],
+      [:INDENT, 2],
+      [:TRUE, 'true'],
+      [:DEDENT, 0]
     ])
   end
 end
