@@ -81,4 +81,18 @@ CODE
       [:DEDENT, 0]
     ])
   end
+
+  it 'tokenizes def statement' do
+    code = <<-CODE
+def foo:
+  true
+CODE
+    tokens = @lexer.tokenize(code)
+    expect(tokens).to eq([
+      [:DEF, 'def'], [:IDENTIFIER, 'foo'],
+      [:INDENT, 2],
+      [:TRUE, 'true'],
+      [:DEDENT, 0]
+    ])
+  end
 end

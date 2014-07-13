@@ -42,10 +42,23 @@ describe "Parser" do
     code = <<-CODE
 if foo:
   true
-CODE
+    CODE
     nodes = Nodes.new([
       IfNode.new(GetLocalNode.new('foo'), Nodes.new([TrueNode.new]))
     ])
     expect(@parser.parse(code)).to eq(nodes)
+  end
+
+  context 'method definition' do
+    it 'parses without params' do
+      code = <<-CODE
+def foo:
+  true
+CODE
+      nodes = Nodes.new([
+        DefNode.new('foo', [], Nodes.new([TrueNode.new]))
+      ])
+      expect(@parser.parse(code)).to eq(nodes)
+    end
   end
 end

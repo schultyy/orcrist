@@ -1,6 +1,7 @@
 class WookieParser
 
 token IF
+token DEF
 token NEWLINE
 token NUMBER
 token STRING
@@ -37,6 +38,7 @@ rule
   | Operator
   | GetLocal
   | SetLocal
+  | Def
   | If
   ;
 
@@ -65,6 +67,11 @@ rule
   Block:
     INDENT Expressions DEDENT     { result = val[1] }
   ;
+
+  Def:
+    DEF IDENTIFIER Block          { result = DefNode.new(val[1], [], val[2]) }
+  ;
+
   If:
     IF Expression Block           { result = IfNode.new(val[1], val[2]) }
   ;

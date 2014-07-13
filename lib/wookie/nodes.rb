@@ -17,6 +17,8 @@ class SetLocalNode < Struct.new(:name, :value); end
 
 class IfNode < Struct.new(:condition, :body); end
 
+class DefNode < Struct.new(:name, :params, :body); end
+
 class TrueNode < LiteralNode
   def initialize
     super(true)
