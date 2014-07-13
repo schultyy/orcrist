@@ -46,6 +46,6 @@ CODE
     nodes = Nodes.new([
       IfNode.new(GetLocalNode.new('foo'), Nodes.new([TrueNode.new]))
     ])
-    expect(@parser.parse(code,true)).to eq(nodes)
+    expect(@parser.parse(code)).to eq(nodes)
   end
 end
