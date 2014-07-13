@@ -70,6 +70,14 @@ rule
 
   Def:
     DEF IDENTIFIER Block          { result = DefNode.new(val[1], [], val[2]) }
+  | DEF IDENTIFIER
+      "(" ParamList ")" Block     { result = DefNode.new(val[1], val[3], val[5]) }
+  ;
+
+  ParamList:
+    /* nothing */                 { result = [] }
+  | IDENTIFIER                    { result = val }
+  | ParamList "," IDENTIFIER      { result = val[0] << val[2] }
   ;
 
   If:

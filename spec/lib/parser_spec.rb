@@ -60,5 +60,17 @@ CODE
       ])
       expect(@parser.parse(code)).to eq(nodes)
     end
+
+    it 'parses with params' do
+      code = <<-CODE
+def foo(bar, baz):
+  baz
+CODE
+      nodes = Nodes.new([
+        DefNode.new('foo', ['bar', 'baz'],
+                              Nodes.new([GetLocalNode.new('baz')]))
+      ])
+      expect(@parser.parse(code)).to eq(nodes)
+    end
   end
 end
