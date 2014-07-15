@@ -54,7 +54,7 @@ if foo:
       code = <<-CODE
 def foo:
   true
-CODE
+      CODE
       nodes = Nodes.new([
         DefNode.new('foo', [], Nodes.new([TrueNode.new]))
       ])
@@ -65,12 +65,32 @@ CODE
       code = <<-CODE
 def foo(bar, baz):
   baz
-CODE
+      CODE
       nodes = Nodes.new([
         DefNode.new('foo', ['bar', 'baz'],
-                              Nodes.new([GetLocalNode.new('baz')]))
+                    Nodes.new([GetLocalNode.new('baz')]))
       ])
       expect(@parser.parse(code)).to eq(nodes)
     end
+  end
+
+  it 'parses method call without arguments' do
+    code = 'foo'
+
+    nodes = Nodes.new([
+      GetLocalNode.new('foo')
+    ])
+    expect(@parser.parse(code)).to eq(nodes)
+  end
+
+  it 'parses method call with arguments' do
+    code = 'foo(a, b)'
+
+    nodes = Nodes.new([
+      CallNode.new(nil, 'foo',
+                [GetLocalNode.new('a'),
+                GetLocalNode.new('b')])
+    ])
+    expect(@parser.parse(code)).to eq(nodes)
   end
 end

@@ -35,6 +35,7 @@ rule
 
   Expression:
     Literal
+  | Call
   | Operator
   | GetLocal
   | SetLocal
@@ -49,6 +50,24 @@ rule
   | FALSE                         { result = FalseNode.new }
   | NIL                           { result = NilNode.new }
   ;
+
+  Call:
+    IDENTIFIER Arguments          { result = CallNode.new(nil, val[0], val[1]) }
+  | Expression "." IDENTIFIER
+      Arguments                   { result = CallNode.new(val[0], val[2], val[3]) }
+  | Expression "." IDENTIFIER     { result = CallNode.new(val[0], val[2], []) }
+  ;
+
+  Arguments:
+    "(" ")"                       { result = [] }
+  | "(" ArgList ")"               { result = val[1] }
+  ;
+
+  ArgList:
+    Expression                    { result = val }
+  | ArgList "," Expression        { result = val[0] << val[2] }
+  ;
+ 
 
   Operator:
   | Expression '+'  Expression  { result = CallNode.new(val[0], val[1], [val[2]]) }
