@@ -76,3 +76,15 @@ class DefNode
     context.current_class.runtime_methods[name] = method
   end
 end
+
+class CallNode
+  def eval(context)
+    if receiver
+      value = receiver.eval(context)
+    else
+      value = context.current_self # Default to `self` if no receiver.
+    end
+    evaluated_arguments = arguments.map { |arg| arg.eval(context) }
+    value.call(method, evaluated_arguments)
+  end
+end

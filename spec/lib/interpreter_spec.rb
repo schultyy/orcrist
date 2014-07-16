@@ -1,5 +1,6 @@
 require 'spec_helper'
 require 'wookie/interpreter'
+require 'pry'
 
 describe 'Interpreter' do
   let(:code) { '' }
@@ -31,6 +32,12 @@ describe 'Interpreter' do
     end
   end
 
+  describe 'mathematical operations' do
+    it 'executes addition' do
+      expect(@interpreter.eval('1 + 2').ruby_value).to eq(3)
+    end
+  end
+
   describe 'nil assignment' do
     let(:code) { 'a = nil' }
     context 'root context' do
@@ -42,10 +49,15 @@ describe 'Interpreter' do
   end
 
   context 'methods' do
-    let(:code) { resource('method_definition') }
-    let(:runtime_methods) { root_context.current_class.runtime_methods }
     it 'is defined in context' do
+      @interpreter.eval(resource('method_definition'))
+      runtime_methods = root_context.current_class.runtime_methods
       expect(runtime_methods.fetch('foo')).to_not eq nil
+    end
+
+    it 'is callable' do
+      @interpreter.eval(resource('method_call'))
+      expect(root_context.locals.fetch('result').ruby_value).to eq(3)
     end
   end
 end
