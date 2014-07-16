@@ -23,6 +23,5 @@ end
 def resource(filename)
   root = File.dirname(__FILE__)
   file = File.join(root, 'resources', "#{filename}.wk")
-  p file
   ::File.read(file)
 end
