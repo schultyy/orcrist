@@ -33,8 +33,13 @@ describe 'Interpreter' do
   end
 
   describe 'mathematical operations' do
-    it 'executes addition' do
-      expect(@interpreter.eval('1 + 2').ruby_value).to eq(3)
+    context 'addition' do
+      it 'executes addition' do
+        expect(@interpreter.eval('1 + 2').ruby_value).to eq(3)
+      end
+      it 'raises exception for non number operand' do
+        expect { @interpreter.eval('true + 2') }.to raise_error(RuntimeError)
+      end
     end
   end
 
