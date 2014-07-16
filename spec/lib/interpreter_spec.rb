@@ -40,4 +40,12 @@ describe 'Interpreter' do
       end
     end
   end
+
+  context 'methods' do
+    let(:code) { resource('method_definition') }
+    let(:runtime_methods) { root_context.current_class.runtime_methods }
+    it 'is defined in context' do
+      expect(runtime_methods.fetch('foo')).to_not eq nil
+    end
+  end
 end

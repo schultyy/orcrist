@@ -69,3 +69,10 @@ class SetLocalNode
     context.locals[name] = value.eval(context)
   end
 end
+
+class DefNode
+  def eval(context)
+    method = WookieMethod.new(params, body)
+    context.current_class.runtime_methods[name] = method
+  end
+end
