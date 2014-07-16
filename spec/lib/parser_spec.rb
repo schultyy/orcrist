@@ -74,23 +74,25 @@ def foo(bar, baz):
     end
   end
 
-  it 'parses method call without arguments' do
-    code = 'foo'
+  context 'method call' do
+    it 'parses without arguments' do
+      code = 'foo'
 
-    nodes = Nodes.new([
-      GetLocalNode.new('foo')
-    ])
-    expect(@parser.parse(code)).to eq(nodes)
-  end
+      nodes = Nodes.new([
+        GetLocalNode.new('foo')
+      ])
+      expect(@parser.parse(code)).to eq(nodes)
+    end
 
-  it 'parses method call with arguments' do
-    code = 'foo(a, b)'
+    it 'parses with arguments' do
+      code = 'foo(a, b)'
 
-    nodes = Nodes.new([
-      CallNode.new(nil, 'foo',
-                [GetLocalNode.new('a'),
-                GetLocalNode.new('b')])
-    ])
-    expect(@parser.parse(code)).to eq(nodes)
+      nodes = Nodes.new([
+        CallNode.new(nil, 'foo',
+                     [GetLocalNode.new('a'),
+                      GetLocalNode.new('b')])
+      ])
+      expect(@parser.parse(code)).to eq(nodes)
+    end
   end
 end
