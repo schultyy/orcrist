@@ -1,6 +1,5 @@
 require 'spec_helper'
 require 'wookie/interpreter'
-require 'pry'
 
 describe 'Interpreter' do
   let(:code) { '' }
