@@ -32,3 +32,13 @@ Constants["Number"].def "+" do |receiver, arguments|
   end
   Constants["Number"].new_with_value(result)
 end
+
+Constants["Number"].def "-" do |receiver, arguments|
+  operand = arguments.first
+  if operand.ruby_value.instance_of?(Fixnum)
+    result = receiver.ruby_value - arguments.first.ruby_value
+  else
+    raise RuntimeError, "Method '-' not defined for types #{receiver.class}, #{operand.class}"
+  end
+  Constants["Number"].new_with_value(result)
+end

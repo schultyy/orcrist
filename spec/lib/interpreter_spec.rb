@@ -48,7 +48,24 @@ describe 'Interpreter' do
       it 'raises exception for second non number operand' do
         expect { @interpreter.eval('1 + false') }.to raise_error(RuntimeError)
       end
+    end
 
+    context 'substraction' do
+      it 'executes substraction' do
+        expect(@interpreter.eval('2 - 1').ruby_value).to eq(1)
+      end
+
+      it 'executes with three summands' do
+        expect(@interpreter.eval('3 - 2 - 1').ruby_value).to eq(0)
+      end
+
+      it 'raises exception for first non number operand' do
+        expect { @interpreter.eval('true - 2') }.to raise_error(RuntimeError)
+      end
+
+      it 'raises exception for second non number operand' do
+        expect { @interpreter.eval('1 - false') }.to raise_error(RuntimeError)
+      end
     end
   end
 
