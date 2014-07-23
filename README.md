@@ -17,3 +17,14 @@ A method is defined with the `def` keyword, followed by an identifier and params
 `foo(a,b)` with params
 
 `foo` without params. Parentheses are optional here.
+
+
+# Basic type checking
+
+When you do addition or subtraction, types are checked:
+
+`3 - 4 # => ok`
+
+`3 + 5 # => ok`
+
+`3 + true # => false`
