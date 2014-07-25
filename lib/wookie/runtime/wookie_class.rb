@@ -24,3 +24,34 @@ class WookieClass < WookieObject
     WookieObject.new(self, value)
   end
 end
+
+class NumberClass < WookieClass
+  def initialize
+    super
+    initalize_runtime_methods
+  end
+
+  private
+
+  def initalize_runtime_methods
+    self.def "+" do |receiver, arguments|
+      operand = arguments.first
+      if operand.ruby_value.instance_of?(Fixnum)
+        result = receiver.ruby_value + arguments.first.ruby_value
+      else
+        raise RuntimeError, "Method '+' not defined for types #{receiver.class}, #{operand.class}"
+      end
+      Constants["Number"].new_with_value(result)
+    end
+
+    self.def "-" do |receiver, arguments|
+      operand = arguments.first
+      if operand.ruby_value.instance_of?(Fixnum)
+        result = receiver.ruby_value - arguments.first.ruby_value
+      else
+        raise RuntimeError, "Method '-' not defined for types #{receiver.class}, #{operand.class}"
+      end
+      Constants["Number"].new_with_value(result)
+    end
+  end
+end
