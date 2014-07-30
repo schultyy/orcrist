@@ -39,6 +39,16 @@ module Addable
   end
 end
 
+
+class StringClass < WookieClass
+  include Addable
+  def initialize
+    super
+    register_addable(->(op) { op.ruby_value.instance_of?(String) },
+              ->(result) { Constants["String"].new_with_value(result) })
+  end
+end
+
 class NumberClass < WookieClass
   include Addable
   def initialize

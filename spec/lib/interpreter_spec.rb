@@ -14,6 +14,12 @@ describe 'Interpreter' do
     expect(@interpreter.eval('5').ruby_value).to eq(5)
   end
 
+  describe 'strings' do
+    specify 'concatenate strings' do
+      expect(@interpreter.eval('"bana" + "ne"').ruby_value).to eq 'banane'
+    end
+  end
+
   describe 'assignment' do
     let(:code) { 'a = 5' }
     context 'root context' do

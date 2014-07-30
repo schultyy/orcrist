@@ -4,7 +4,7 @@ Constants["Class"] = WookieClass.new
 Constants["Class"].runtime_class = Constants["Class"]
 Constants["Object"] = WookieClass.new
 Constants["Number"] = NumberClass.new
-Constants["String"] = WookieClass.new
+Constants["String"] = StringClass.new
 
 Constants["TrueClass"] = WookieClass.new
 Constants["FalseClass"] = WookieClass.new
