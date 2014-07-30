@@ -60,7 +60,11 @@ end
 
 class GetLocalNode
   def eval(context)
-    context.locals[name]
+    if context.current_class.runtime_methods.include?(name)
+      context.current_class.runtime_methods[name]
+    else
+      context.locals[name]
+    end
   end
 end
 

@@ -20,6 +20,13 @@ describe 'Interpreter' do
     end
   end
 
+  describe 'methods' do
+    let(:code) { resource('method_assign_to_var') }
+    it 'can be assigned to variable' do
+      expect(root_context.locals.fetch('my_adder').class).to eq WookieMethod
+    end
+  end
+
   describe 'assignment' do
     let(:code) { 'a = 5' }
     context 'root context' do

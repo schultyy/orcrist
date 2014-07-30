@@ -1,0 +1,4 @@
+def add(a,b):
+  a + b
+
+my_adder = add
