@@ -25,25 +25,32 @@ class WookieClass < WookieObject
   end
 end
 
+module Addable
+  def register_addable(type_checker, value)
+    self.def "+" do |receiver, arguments|
+      operand = arguments.first
+      if type_checker.(operand)
+        result = receiver.ruby_value + arguments.first.ruby_value
+      else
+        raise RuntimeError, "Method '+' not defined for types #{receiver.class}, #{operand.class}"
+      end
+      value.(result)
+    end
+  end
+end
+
 class NumberClass < WookieClass
+  include Addable
   def initialize
     super
+    register_addable(->(op) { op.ruby_value.instance_of?(Fixnum) },
+              ->(result) { Constants["Number"].new_with_value(result) })
     initalize_runtime_methods
   end
 
   private
 
   def initalize_runtime_methods
-    self.def "+" do |receiver, arguments|
-      operand = arguments.first
-      if operand.ruby_value.instance_of?(Fixnum)
-        result = receiver.ruby_value + arguments.first.ruby_value
-      else
-        raise RuntimeError, "Method '+' not defined for types #{receiver.class}, #{operand.class}"
-      end
-      Constants["Number"].new_with_value(result)
-    end
-
     self.def "-" do |receiver, arguments|
       operand = arguments.first
       if operand.ruby_value.instance_of?(Fixnum)
