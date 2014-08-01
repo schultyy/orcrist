@@ -18,6 +18,15 @@ A method is defined with the `def` keyword, followed by an identifier and params
 
 `foo` without params. Parentheses are optional here.
 
+Assign a method to a variable and call it:
+
+```
+def add(a,b):
+  a + b
+
+my_add = add
+my_add(1,2) #=> 3
+```
 
 # Basic type checking
 
