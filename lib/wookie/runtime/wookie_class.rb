@@ -6,6 +6,10 @@ class WookieClass < WookieObject
     @runtime_class = Constants['Class']
   end
 
+  def alias_method(alias_name, method_name)
+    @runtime_methods[alias_name.to_s] = lookup(method_name)
+  end
+
   def lookup(method_name)
     method = @runtime_methods[method_name]
     raise "Method not found: #{method_name}" if method.nil?

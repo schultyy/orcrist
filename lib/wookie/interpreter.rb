@@ -70,7 +70,11 @@ end
 
 class SetLocalNode
   def eval(context)
-    context.locals[name] = value.eval(context)
+    evaled = value.eval(context)
+    if evaled.class == WookieMethod
+      context.current_class.alias_method(name, value.name)
+    end
+    context.locals[name] = evaled
   end
 end
 
