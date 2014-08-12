@@ -1,7 +1,8 @@
 wookie
 ======
 
-[![Build Status](https://travis-ci.org/schultyy/wookie.svg?branch=master)](https://travis-ci.org/schultyy/wookie)
+[![Build
+Status](https://travis-ci.org/schultyy/orcrist.svg?branch=master)](https://travis-ci.org/schultyy/orcrist)
 
 
 # Methods
