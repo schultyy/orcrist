@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require 'orcrist'
+
+Orcrist::CLI::Application.start(ARGV)

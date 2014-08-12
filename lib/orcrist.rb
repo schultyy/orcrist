@@ -1,5 +1,5 @@
-require "wookie/version"
+require "orcrist/version"
+require 'orcrist/cli/application'
 
-module Wookie
-  # Your code goes here...
+module Orcrist
 end

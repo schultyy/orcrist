@@ -10,3 +10,7 @@ task :compile_grammar do
   `racc -o lib/orcrist/parser.rb lib/orcrist/grammar.y`
 end
 
+desc "Run gem"
+task :run do
+  system 'ruby -Ilib ./bin/orcrist'
+end
