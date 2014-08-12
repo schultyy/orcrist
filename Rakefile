@@ -11,6 +11,7 @@ task :compile_grammar do
 end
 
 desc "Run gem"
-task :run do
-  system 'ruby -Ilib ./bin/orcrist'
+task :run, :filename do |t, args|
+  filename = args[:filename]
+  system "ruby -Ilib ./bin/orcrist exec #{filename}"
 end
