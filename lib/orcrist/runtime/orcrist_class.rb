@@ -1,4 +1,4 @@
-class WookieClass < WookieObject
+class OrcristClass < OrcristObject
   attr_reader :runtime_methods
 
   def initialize
@@ -21,11 +21,11 @@ class WookieClass < WookieObject
   end
 
   def new
-    WookieObject.new(self)
+    OrcristObject.new(self)
   end
 
   def new_with_value(value)
-    WookieObject.new(self, value)
+    OrcristObject.new(self, value)
   end
 end
 
@@ -44,7 +44,7 @@ module Addable
 end
 
 
-class StringClass < WookieClass
+class StringClass < OrcristClass
   include Addable
   def initialize
     super
@@ -53,7 +53,7 @@ class StringClass < WookieClass
   end
 end
 
-class NumberClass < WookieClass
+class NumberClass < OrcristClass
   include Addable
   def initialize
     super

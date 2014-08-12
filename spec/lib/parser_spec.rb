@@ -1,9 +1,9 @@
 require 'spec_helper'
-require 'wookie/parser'
+require 'orcrist/parser'
 
 describe "Parser" do
   before do
-    @parser = WookieParser.new
+    @parser = OrcristParser.new
   end
 
   it 'parses assignment' do

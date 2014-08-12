@@ -1,11 +1,11 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'wookie/version'
+require 'orcrist/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "wookie"
-  spec.version       = Wookie::VERSION
+  spec.name          = "orcrist"
+  spec.version       = Orcrist::VERSION
   spec.authors       = ["Jan Schulte"]
   spec.email         = ["hello@unexpected-co.de"]
   spec.summary       = %q{Programming Language experiments}

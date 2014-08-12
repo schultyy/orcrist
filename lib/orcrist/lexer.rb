@@ -1,6 +1,6 @@
 # Example lexer from http://createyourproglang.com/
 # Only adapted class name
-class WookieLexer
+class OrcristLexer
   KEYWORDS = ["def", "class", "if", "true", "false", "nil"]
 
   def tokenize(code)

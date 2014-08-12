@@ -1,14 +1,14 @@
 Constants = {}
 
-Constants["Class"] = WookieClass.new
+Constants["Class"] = OrcristClass.new
 Constants["Class"].runtime_class = Constants["Class"]
-Constants["Object"] = WookieClass.new
+Constants["Object"] = OrcristClass.new
 Constants["Number"] = NumberClass.new
 Constants["String"] = StringClass.new
 
-Constants["TrueClass"] = WookieClass.new
-Constants["FalseClass"] = WookieClass.new
-Constants['NilClass'] = WookieClass.new
+Constants["TrueClass"] = OrcristClass.new
+Constants["FalseClass"] = OrcristClass.new
+Constants['NilClass'] = OrcristClass.new
 
 Constants["true"] = Constants["TrueClass"].new_with_value(true)
 Constants["false"] = Constants["FalseClass"].new_with_value(false)

@@ -1,4 +1,4 @@
-class WookieParser
+class OrcristParser
 
 token IF
 token DEF
@@ -104,12 +104,12 @@ rule
   ;
 end
 ---- header
-  require "wookie/lexer"
-  require "wookie/nodes"
+  require "orcrist/lexer"
+  require "orcrist/nodes"
 
 ---- inner
   def parse(code, show_tokens=false)
-    @tokens = ::WookieLexer.new.tokenize(code) # Tokenize the code using our lexer
+    @tokens = ::OrcristLexer.new.tokenize(code) # Tokenize the code using our lexer
     puts @tokens.inspect if show_tokens
     do_parse # Kickoff the parsing process
   end

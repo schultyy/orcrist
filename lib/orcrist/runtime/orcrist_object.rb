@@ -1,4 +1,4 @@
-class WookieObject
+class OrcristObject
   attr_accessor :runtime_class, :ruby_value
 
   def initialize(runtime_class, ruby_value = self)

@@ -6,14 +6,14 @@
 
 require 'racc/parser.rb'
 
-  require "wookie/lexer"
-  require "wookie/nodes"
+  require "orcrist/lexer"
+  require "orcrist/nodes"
 
-class WookieParser < Racc::Parser
+class OrcristParser < Racc::Parser
 
 module_eval(<<'...end grammar.y/module_eval...', 'grammar.y', 111)
   def parse(code, show_tokens=false)
-    @tokens = ::WookieLexer.new.tokenize(code) # Tokenize the code using our lexer
+    @tokens = ::OrcristLexer.new.tokenize(code) # Tokenize the code using our lexer
     puts @tokens.inspect if show_tokens
     do_parse # Kickoff the parsing process
   end
@@ -485,4 +485,4 @@ def _reduce_none(val, _values, result)
   val[0]
 end
 
-end   # class WookieParser
+end   # class OrcristParser

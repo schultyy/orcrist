@@ -1,9 +1,9 @@
 require 'spec_helper'
-require 'wookie/lexer'
+require 'orcrist/lexer'
 
 describe "Lexer" do
   before do
-    @lexer = WookieLexer.new
+    @lexer = OrcristLexer.new
   end
 
   it 'tokenizes assignment' do

@@ -1,3 +1,3 @@
-module Wookie
+module Orcrist
   VERSION = "0.0.1"
 end

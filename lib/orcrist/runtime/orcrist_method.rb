@@ -1,4 +1,4 @@
-class WookieMethod
+class OrcristMethod
   def initialize(params, body)
     @params = params
     @body = body

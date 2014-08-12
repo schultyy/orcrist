@@ -1,5 +1,5 @@
 require 'spec_helper'
-require 'wookie/interpreter'
+require 'orcrist/interpreter'
 
 describe 'Interpreter' do
   let(:code) { '' }
@@ -24,7 +24,7 @@ describe 'Interpreter' do
     context 'assignment to variable' do
       let(:code) { resource('method_assign_to_var') }
       it 'assigns to variable' do
-        expect(root_context.locals.fetch('my_adder').class).to eq WookieMethod
+        expect(root_context.locals.fetch('my_adder').class).to eq OrcristMethod
       end
       it 'can be called' do
         expect(@interpreter.eval('my_adder(1,2)').ruby_value).to eq 3

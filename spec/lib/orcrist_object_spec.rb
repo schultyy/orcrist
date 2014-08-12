@@ -1,14 +1,14 @@
 require 'spec_helper'
-require 'wookie/runtime/wookie_object'
+require 'orcrist/runtime/orcrist_object'
 
-describe 'WookieObject' do
+describe 'OrcristObject' do
   it 'assigns runtime class' do
-    obj = WookieObject.new(Object)
+    obj = OrcristObject.new(Object)
     expect(obj.runtime_class).to eq Object
   end
 
   it 'assigns ruby value' do
-    obj = WookieObject.new(Object, self)
+    obj = OrcristObject.new(Object, self)
     expect(obj.ruby_value).to eq self
   end
 end
