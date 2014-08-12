@@ -4,8 +4,15 @@ orcrist
 [![Build
 Status](https://travis-ci.org/schultyy/orcrist.svg?branch=master)](https://travis-ci.org/schultyy/orcrist)
 
+# Usage
 
-# Methods
+```bash
+$ orcrist exec <filename.wk>
+```
+
+## Methods
+
+### Definition
 
 ```
 def foo(a,b):
@@ -13,7 +20,8 @@ def foo(a,b):
 ```
 A method is defined with the `def` keyword, followed by an identifier and params. The colon indicates, that following lines are indented.
 
-# Method call
+
+### Method call
 
 `foo(a,b)` with params
 
@@ -27,6 +35,16 @@ def add(a,b):
 
 my_add = add
 my_add(1,2) #=> 3
+```
+
+### Assign to a variable
+
+```
+def foo(a,b):
+  a + b
+
+add = foo
+add(1,2)
 ```
 
 # Basic type checking
