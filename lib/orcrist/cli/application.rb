@@ -10,7 +10,16 @@ module Orcrist
         interpreter.eval(File.read(filename))
       end
 
-      default_task :exec
+      desc "repl", "Start interactive console"
+      def repl
+        interpreter = Interpreter.new
+        loop do
+          print ">>> "
+          puts interpreter.eval(gets).ruby_value
+        end
+      end
+
+      default_task :repl
     end
   end
 end

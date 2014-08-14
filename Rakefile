@@ -13,5 +13,9 @@ end
 desc "Run gem"
 task :run, :filename do |t, args|
   filename = args[:filename]
-  system "ruby -Ilib ./bin/orcrist exec #{filename}"
+  if filename.nil?
+    system "ruby -Ilib ./bin/orcrist"
+  else
+    system "ruby -Ilib ./bin/orcrist exec #{filename}"
+  end
 end
