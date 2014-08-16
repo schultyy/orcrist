@@ -7,7 +7,7 @@ Status](https://travis-ci.org/schultyy/orcrist.svg?branch=master)](https://travi
 # Usage
 
 ```bash
-$ orcrist exec <filename.wk>
+$ orcrist exec <filename.oc>
 ```
 
 ## Methods
@@ -55,4 +55,4 @@ When you do addition or subtraction, types are checked:
 
 `3 + 5 # => ok`
 
-`3 + true # => false`
+`3 + true # => Error`
